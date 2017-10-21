@@ -1,0 +1,170 @@
+= FuhrparkAdapter  --  REST-API
+Hermann Woock <Hermann.Woock@oose.de>
+v1.0, 31.03.2017
+:toc: right
+:toclevels: 3
+:icons: font
+:imagesdir: assets/images
+:homepage: http://asciidoctor.org
+  
+
+[introduction]
+== Einleitung
+  FuhrparkAdapter ist ein Edge-Service, der die Funktionalitaet zur Verwaltung des Fuhrparks mittels REST-Aufrufen zur Verfuegung stellt.
+  Die API ist RESTfull der Stufe 3. Fuer HATEOAS wir das HAL Protokoll benutzt. 
+  
+NOTE: Der FuhrparkAdapter ist auf REST-Aufrufe fuer Rich Clients ausgelegt. Fuer andere Anforderungen muss ein weiterer Adapter angelegt werden.
+
+[[overview]]
+== Uebersicht
+  Verwaltet werden:
+[horizontal]
+Station:: Standort fuer Kfzs mit dessen Lage und Beschreibung
+Kfz:: ausleihbare Fahrzeuge
+  
+Listen werden nur als Uri uebergeben und muessen gesondert vom Server geholt werden. 
+
+[[overview-http-verbs]]
+== HTTP Verben
+  FuhrparkAdapter tries to adhere as closely as possible to standard HTTP and REST conventions in its use of HTTP verbs.
+
+|===
+  | Verb | Usage
+
+  | `GET`
+  | Used to retrieve a resource
+
+  | `POST`
+  | Used to create a new resource
+
+  | `PATCH`
+  | Used to update an existing resource, including partial updates
+
+  | `PUT`
+  | Used to update an existing resource, full updates only
+
+  | `DELETE`
+  | Used to delete an existing resource
+|===
+
+[[overview-http-status-codes]]
+== HTTP Status Codes
+  Station-service tries to adhere as closely as possible to standard HTTP and REST conventions in its use of HTTP status codes.
+
+|===
+  | Status code | Usage
+
+  | `200 OK`
+  | Standard response for successful HTTP requests.
+   The actual response will depend on the request method used.
+   In a GET request, the response will contain an entity corresponding to the requested resource.
+   In a POST request, the response will contain an entity describing or containing the result of the action.
+
+  | `201 Created`
+  | The request has been fulfilled and resulted in a new resource being created.
+
+  | `204 No Content`
+  | The server successfully processed the request, but is not returning any content.
+
+  | `400 Bad Request`
+  | The server cannot or will not process the request due to something that is perceived to be a client error (e.g., malformed request syntax, invalid request message framing, or deceptive request routing).
+
+  | `404 Not Found`
+  | The requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible.
+|===
+
+[[resources]]
+== Resourcen
+
+
+[[resources-station]]
+=== Station
+  An einer Station stehen Kfzs. Die Schnittstelle bietet Moeglichkeiten, um die Station und die dazugehoerigen Kfzs zu bearbeiten.  
+  
+[[resource-hole-eine-station-mit-spezieller-id]]
+==== hole eine Station mit Id 
+A `GET` request for station with id=1.
+
+include::{snippets}/hole-eine-station-mit-spezieller-id/response-fields.adoc[]
+
+===== Example request
+
+include::{snippets}/hole-eine-station-mit-spezieller-id/curl-request.adoc[]
+
+===== Example response
+
+include::{snippets}/hole-eine-station-mit-spezieller-id/http-response.adoc[]
+
+[[resource-zeige-station-mit-speziellem-kuerzel]]
+==== zeige eine Station mit Kuerzel 
+A `GET` request for station with id=1.
+
+include::{snippets}/zeige-station-mit-speziellem-kuerzel/response-fields.adoc[]
+
+===== Example request
+
+include::{snippets}/zeige-station-mit-speziellem-kuerzel/curl-request.adoc[]
+
+===== Example response
+
+include::{snippets}/zeige-station-mit-speziellem-kuerzel/http-response.adoc[]
+
+[[resource-get-stations-spezifikation]]
+==== Spezifikation fuer Station mit Id
+Hole Spezifikation fuer Station mit id=1
+
+include::{snippets}/get-stations-spezifikation/response-fields.adoc[]
+
+===== Example request
+
+include::{snippets}/get-stations-spezifikation/curl-request.adoc[]
+
+===== Example response
+
+include::{snippets}/get-stations-spezifikation/http-response.adoc[]
+
+[[resource-station-list]]
+==== liste alle Stationen
+A `GET` request lists all of the service's station.
+
+include::{snippets}/list-station/response-fields.adoc[]
+
+===== Example request
+
+include::{snippets}/list-station/curl-request.adoc[]
+
+===== Example response
+
+include::{snippets}/list-station/http-response.adoc[]
+
+[[resources-kfz]]
+=== Kfz
+  Zu reservierende Fahrzeuge.  
+  
+[[resource-autos-an-station]]
+==== hole alle Autos von Station mit Id 
+Hole alle Autos von der Station mit id=1.
+
+include::{snippets}/autos-an-station/response-fields.adoc[]
+
+===== Example request
+
+include::{snippets}/autos-an-station/curl-request.adoc[]
+
+===== Example response
+
+include::{snippets}/autos-an-station/http-response.adoc[]
+
+[[resource-get-auto-image]]
+==== hole Map von Auto mit Id 
+Hole Map von Auto mit id=1.
+
+include::{snippets}/get-auto-image/response-fields.adoc[]
+
+===== Example request
+
+include::{snippets}/get-auto-image/curl-request.adoc[]
+
+===== Example response
+
+include::{snippets}/get-auto-image/http-response.adoc[]
