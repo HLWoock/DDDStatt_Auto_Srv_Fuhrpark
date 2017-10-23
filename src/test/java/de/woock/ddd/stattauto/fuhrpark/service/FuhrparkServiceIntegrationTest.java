@@ -27,8 +27,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import de.woock.ddd.stattauto.AbstractTest;
 import de.woock.ddd.stattauto.DddStattAuto_Srv_Fuhrpark;
+import de.woock.ddd.stattauto.fuhrpark.AbstractTest;
 import de.woock.ddd.stattauto.fuhrpark.entity.Gps;
 import de.woock.ddd.stattauto.fuhrpark.entity.station.Auswahlkriterien;
 import de.woock.ddd.stattauto.fuhrpark.entity.station.Spezifikation;

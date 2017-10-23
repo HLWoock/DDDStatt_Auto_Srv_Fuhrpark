@@ -1,4 +1,4 @@
-package de.woock.ddd.stattauto;
+package de.woock.ddd.stattauto.fuhrpark;
 
 import org.apache.log4j.Logger;
 import org.junit.runner.RunWith;
